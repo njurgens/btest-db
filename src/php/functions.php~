@@ -1,0 +1,84 @@
+<?php
+    require_once("config.php"); // This is where global variables are defined
+    
+    function findType($bcode)
+    { // detect type from scanned barcode
+        $type = substr($bcode,0,1);
+        echo "first char is: " . $type. "<br>";
+        switch ($type) {
+            case 0:
+                echo "type is: person" . "<br>";
+                return "person";
+                break;
+            case 1:
+                echo "type is: cell" . "<br>";
+                return "cell";
+                break;
+            case 2:
+                echo "type is: equipment" . "<br>";
+                return "equipment";
+                break;
+        }
+        return;
+    }
+    
+    function findTable($type, $PEOPLE_TABLE, $CELL_TABLE, $EQUIP_TABLE)
+    { // provide correct table based on type
+        switch ($type) {
+            case "person":
+                
+                return "$PEOPLE_TABLE";
+                break;
+            case "cell":
+                return "$CELL_TABLE";
+                break;
+            case "equipment":
+                return "$EQUIP_TABLE";
+                break;
+        }
+        return;
+    }
+    
+    function readData($result)
+    {
+        echo "reading data <br>";
+        $data = array();
+        while($row = mysql_fetch_array($result))
+        {
+            echo "pushing data <br>";
+            array_push($data,$row);
+        }
+        return $data;
+    }
+    
+    function content($data, $type)
+    {
+        switch ($type) {
+            case "person":
+                echo "content for person: <br>";
+                echo "Name: " . $data[0]["name"] . "<br>";
+                echo "GMID: " . $data[0]["gmid"] . "<br>";
+                echo "code: " . $data[0]["barcode"] . "<br>";
+ 
+                break;
+            case "cell":
+                return "$CELL_TABLE";
+                break;
+            case "equipment":
+                return "$EQUIP_TABLE";
+                break;
+        }
+        return;
+    
+    }
+    
+?>
+     
+     
+     
+     
+     
+     
+     
+        
+

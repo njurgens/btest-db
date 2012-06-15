@@ -1,0 +1,29 @@
+
+<?php
+    include_once("config.php");
+    include_once("functions.php");
+    
+    $bcode=$_GET["bcode"];
+    echo "barcode: " . $bcode . "<br>";
+    
+    $con = mysql_connect("$SERVER", "$USER", "$PASSWD");
+    if (!$con)
+    {
+        die('Could not connect: ' . mysql_error());
+    }
+    echo "database is: $DB_NAME <br>";
+    mysql_select_db("$DB_NAME", $con);
+    
+    $type = findType($bcode);
+    $table = findTable($type, $PEOPLE_TABLE, $CELL_TABLE, $EQUIP_TABLE);
+    echo "type is : " . $type . "<br>";
+    echo "table is: " . $table . "<br>";
+    $sql="SELECT * FROM $table WHERE barcode=$bcode";
+    $result = mysql_query($sql);
+
+    $data = readData($result);
+    
+    content($data,$type);
+
+    mysql_close($con);
+?> 

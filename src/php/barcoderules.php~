@@ -1,0 +1,28 @@
+<?php
+    require_once("config.php");
+    function getType($bcode)
+    {
+        $type = substr($bcode,1);
+        
+        switch ($type) {
+            case 0:
+                return "person";
+                break;
+            case 1:
+                return "cell";
+                break;
+            case 2:
+                return "equipment";
+                break;
+            }
+        return;
+    }
+    
+    function getTable($type)
+    {
+        switch ($type) {
+            case "person":
+                return "$peopleTable" 
+?>
+        
+
