@@ -1,6 +1,13 @@
 <?php
-    require_once("config.php"); // This is where global variables are defined
-    
+/******************************************************
+* btdb-functions.php
+* contains menu definitions to be added to index.php
+* 
+* author: Nicholas Jurgens [nicholas2010081@gmail.com]
+* date: 16 June 2012
+* 
+*******************************************************/
+
 	function dbconnect($server, $user, $passwd, $db_name)
 	{ // connect to the database server
 		$con = mysql_connect("$server", "$user", "$passwd");

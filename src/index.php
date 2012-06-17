@@ -1,66 +1,35 @@
-<html>
-    <head>
-        <script type="text/javascript" src="js/functions.js"></script>
-		<script type="text/javascript" src="js/floating-1.8.js"></script>
-		<script type="text/javascript">
-			window.onload = function() 
-			{
-				document.getElementById("bcodeInput").focus();
-			}
-		</script>
-	</head>
+<?php
+/******************************************************
+* index.php
+* main page; all other pages are called from here
+* 
+* author: Nicholas Jurgens [nicholas2010081@gmail.com]
+* date: 16 June 2012
+* 
+*******************************************************/
+	require('php/header.php');
+	require('config.php');
+?>
+	<style> html, body {width:100%;height: 95%; padding: 0px; margin: 10px;}</style>
     <body>
-	<image src="/assets/logo.png" width="200px" style="position: absolute; left: 10px; bottom: 10px;"/>
-	<center>
-		<image src="/assets/banner-washed.png" width="700"/>
-		<br>
-		<input id="bcodeInput" style="color:grey; text-align:center" type="text"  onkeyup="getData(this.value)" />
-		<br>
-
-		<br>
-		<input type="button" onclick="doPeople()" value="people"/>
-		<input type="button" onclick="doCells()" value="cells" />
-		<input type="button" onclick="doPacks()" value="packs" />
-		<input type="button" onclick="doEquip()" value="equipment" />
-        <?php /* <form>
-            <input type="text" name="barcode" id="bcode" value="" onkeyup="getData(this.value)"/>
-            <input type="button" onclick="getData(document.getElementById('bcode').value)" value="submit">
-        </form> */ ?>
-        <br><br>
-        <div id="txtHint"><b>Database info will be listed here.</b></div>
-		<div id="top_content"></div>
-		<div id="floatdiv" style="  
-			position:absolute;  
-			width:700px;top:10px;right:10px;  
-			padding:16px;background:#FFFFFF;  
-			border:2px solid #2266AA;  
-			z-index:100">  
-			This is a floating javascript menu.  
-		</div>  
-		<script type="text/javascript">  
-			floatingMenu.add('floatdiv',  
-				{  
-					// Represents distance from left or right browser window  
-					// border depending upon property used. Only one should be  
-					// specified.  
-					// targetLeft: 0,  
-					//targetRight: 10,  
-		  
-					// Represents distance from top or bottom browser window  
-					// border depending upon property used. Only one should be  
-					// specified.  
-					//targetTop: 10,  
-					// targetBottom: 0,  
-		  
-					// Uncomment one of those if you need centering on  
-					// X- or Y- axis.  
-					 centerX: true,  
-					 centerY: true,  
-		  
-					// Remove this one if you don't want snap effect  
-					snap: true  
-				});  
-		</script>  
-	</center>
+		<?php //<image src="assets/logo.png" width="200px" style="position: absolute; left: 10px; bottom: 10px;"/> ?>
+		<div style="-moz-border-radius: 15px;border-radius: 15px;margin-left:auto;margin-right:auto;width:750px;height:100%;border:3px solid #062A78">
+			<center style="height:95%">
+				<div style="border:1px solid #062A78;margin-left:auto;margin-right:auto;margin-top:20px;margin-top-moz-border-radius: 15px;border-radius: 15px;background-image: url(assets/banner-washed.png); height:120px; width:700px">
+					<div style="border:1px solid #062A78;z-index:2;opacity:0.7;position:absolute; float:left;-moz-border-radius: 15px;border-radius: 15px;margin-top:25px;margin-left:20px;margin-bottom:auto;height:70px;width:240px;background-color:#fff">
+					</div>
+					<div style="z-index:3;opacity:1;position:absolute; float:left;-moz-border-radius: 15px;border-radius: 15px;margin-top:25px;margin-left:20px;margin-bottom:auto;height:70px;width:240px;">
+						<image src="assets/logo.png" align="left" width="200px" style="float:left;margin-top:10px;margin-left:20px;margin-bottom:auto"/>
+					</div>
+					
+				</div>
+				<?php //<image src="assets/banner-washed.png" style="-moz-border-radius: 15px;border-radius: 15px;padding:0px;" width="700px" />?>
+				<?php require('php/menu.php'); ?>
+				<br>
+				<div id='main_content' style='height:65%;overflow:auto;margin-top:50px;margin-left:auto;margin-right:auto;width:700px' >
+					<br>
+				</div>
+			</center>
+		</div>
     </body>
 </html> 
